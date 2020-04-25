@@ -10,23 +10,7 @@
   <link rel="stylesheet" type="text/css" href="../assets/css/homepage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <style>
-     #formarea{
-        margin-top: 20px;
-        border-radius: 10px;
-        opacity: 0.8;
-      }
-      .error {
-  width: 92%; 
-  margin: 0px auto; 
-  padding: 10px; 
-  border: 1px solid #a94442; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
-  text-align: left;
-}
-  </style>
+  <link rel="stylesheet" href="../assets/css/otp.css">
 
 </head>
 <body>
@@ -74,20 +58,6 @@
         </div>
       </form>
     </div>
-	 
-  <!-- <form method="post" action="otpverification.php" style="color: grey; padding: 20px;">
-  	 <?php include('errors.php'); ?>
-  	<div class="input-group">
-  		<label style="color: grey; font-size: 25px;"><b>OTP</b></label>
-  		<input type="text" name="token" placeholder="Enter OTP" >
-  	</div>
-  	
-  	<div class="input-group">
-  		<button type="submit"   style="font-size: 20px;width:100px;" class="btn btn-primary" name="otp_user">Verify</button>
-      
-  	</div>
-  	
-  </form> -->
 </body>
 </html>
 <script src="../assets/js/aos.js"></script>

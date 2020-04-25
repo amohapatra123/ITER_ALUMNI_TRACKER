@@ -10,36 +10,7 @@
   <link rel="stylesheet" type="text/css" href="../assets/css/homepage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <style>
-    body{
-      background-image: url("../assets/images/bg.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-     #formarea{
-        margin-top: 20px;
-        border-radius: 10px;
-        opacity: 0.5;
-      }
-      .error {
-  width: 92%; 
-  margin: 0px auto; 
-  padding: 10px; 
-  border: 1px solid #a94442; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
-  text-align: left;
-}
-    .logo{
-        width: 40px;
-        height: 40px;
-      }
-      #header{
-        margin-top: 90px;
-        background-color:whitesmoke;
-      }
-  </style>
+  <link rel="stylesheet" href="../assets/css/login.css">
   
 </head>
 <body>
@@ -111,25 +82,7 @@
         </div>
       </form>
     </div>
-	 
- <!--  <form method="post" action="login.php" style="color: grey; padding: 20px;">
-  	<?php include('errors.php'); ?>
-    
-  	<div class="input-group">
-  		<label style="color: grey; font-size: 25px;"><b>Username</b></label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label style="color: grey; font-size: 25px;"><b>Password</b></label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit"  style="font-size: 20px;width:100px;" class="btn" name="login_user">Login</button>
-  	</div>
-  	<p>
-  		Not yet a member? <a  class="active" href="register.php">Sign up</a>
-  	</p>
-  </form> -->
+
 </body>
 </html>
 <script src="../assets/js/aos.js"></script>

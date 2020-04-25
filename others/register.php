@@ -11,64 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../assets/css/homepage.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	
-	<style>
-		body{
-		background-image: url("../assets/images/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-		}
-
-    .form-group {
-  margin: 10px 0px 10px 0px;
-}
-.form-group input {
-  height: 50  px;
-  width: 93%;
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-}
-    .error {
-  width: 92%; 
-  margin: 0px auto; 
-  padding: 10px; 
-  border: 1px solid #a94442; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
-  text-align: left;
-}
-		
-		.me{
-			background-color: black;
-			background-attachment: relative;
-
-			width:600px;
-			height: 875px;
-			margin-top:80px;
-
-			
-			padding: 50px;
-			opacity: 0.7; 
-			border-radius: 10px;
-		}
-    .logo{
-        width: 40px;
-        height: 40px;
-      }
-      #header{
-        margin-top: 90px;
-        background-color:whitesmoke;
-      }
-      #formarea{
-        margin-top: 20px;
-        border-radius: 10px;
-        opacity: 0.8;
-      }
-		
-	</style> 
+	<link rel="stylesheet" href="../assets/css/register.css">
 </head>
 <body >
   <div class="container"  id="navbar">

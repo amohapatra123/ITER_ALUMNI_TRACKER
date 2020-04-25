@@ -1,0 +1,33 @@
+th {
+  text-align: center;
+}
+td {
+  text-align: center;
+}
+.error {
+  width: 92%;
+  margin: 0px auto;
+  padding: 10px;
+  border: 1px solid #a94442;
+  color: #a94442;
+  background: #f2dede;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+#header {
+  margin-top: 90px;
+}
+#text {
+  width: 70%;
+  height: 150%;
+}
+#msg,
+#add,
+#ntc:hover {
+  cursor: pointer;
+}

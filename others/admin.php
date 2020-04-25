@@ -9,44 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<style>
-    th{
-        text-align: center;
-    }
-    td{
-        text-align: center;
-    }
-     .error {
-  width: 92%; 
-  margin: 0px auto; 
-  padding: 10px; 
-  border: 1px solid #a94442; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
-  text-align: left;
-}
-	
-
-    .logo{
-            width: 40px;
-            height: 40px;
-        }
-        #header{
-            margin-top: 90px;
-            
-        }
-   #text{
-    width: 70%;
-    height: 150%;
-   }
-  #msg,#add,#ntc:hover{
-            cursor: pointer;
-  }
-    
-</style>
-
+    <link rel="stylesheet" href="../assets/css/admin.css">
 
 
 </head>
