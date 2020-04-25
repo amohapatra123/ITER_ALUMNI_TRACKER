@@ -62,7 +62,7 @@
                </div>
              </div>
              </nav>
-    </div>
+</div>
     <div class="container" id="header" style="background-color: whitesmoke;">
         <div class="container" id="heading" style="padding: 10px;">
             <div class="row">
@@ -128,7 +128,7 @@
                        
                         <div class="form-row">
                             <div class="col-md-12  offset-md-2" style="margin-bottom:90px;width: 100%;">
-                                <textarea  id="text" class="form-text form-control" name="textarea"></textarea>
+                                <textarea  id="text" class="form-text form-control" name="noticearea"></textarea>
                             </div>
                         </div>
                         <div class="form-row">
@@ -153,14 +153,15 @@
                 </div>
                 <div class="modal-body">
                     <form action="admin.php" method="POST">
+                            <?php include('errors.php'); ?>
                         <div class="container">
                         <div class="form-group row">
                      <label for="name" class="col-md-2 col-form-label offset-md-2" style="color:black;">Name</label>
-                     <div class="col-md-6"><input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" ></div>
+                     <div class="col-md-6"><input type="text" class="form-control" name="name" id="name" placeholder="Enter Name"></div>
                 </div>
                 <div class="form-group row">
                      <label for="email" class="col-md-2 col-form-label offset-md-2" style="color:black;">Email</label>
-                     <div class="col-md-6"><input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" ></div>
+                     <div class="col-md-6"><input type="email" class="form-control" name="email" id="email" placeholder="Enter Email"></div>
                 </div>
                 <div class="form-group row">
                      <label for="username" class="col-md-2 col-form-label offset-md-2" style="color:black;">Username</label>
@@ -171,7 +172,7 @@
                      <div class="col-md-6"><input type="password" class="form-control" name="password_1" id="password" placeholder="Enter password" ></div>
                 </div>
                 <div class="form-group row">
-                     <label for="password1" class="col-md-2 col-form-label offset-md-2" style="color:black;">Condirm password</label>
+                     <label for="password1" class="col-md-2 col-form-label offset-md-2" style="color:black;">Confirm password</label>
                      <div class="col-md-6"><input type="password" class="form-control" name="password_2" id="password1" placeholder="Confirm password" ></div>
                 </div>
                 <input type="hidden" name="type"   value="Admin">
@@ -292,6 +293,7 @@ if(isset($_POST['message_button'])){
 
 ?>
 <?php
+$noticearea="";
 $connect=mysqli_connect('localhost','root','','reg');
 if(isset($_POST['notice_button'])){
     $noticearea=$_POST['noticearea'];
@@ -328,19 +330,63 @@ if(isset($_POST['delete'])){
 <!-- add admin -->
 
 <?php
+$name="";
+$email="";
+$username="";
+$status="";
+$type="";
+$errorsadmin = array(); 
 
-$connect=mysqli_connect('localhost','root','','reg');
+$db=mysqli_connect('localhost','root','','reg');
 if(isset($_POST['add_button'])){
 
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $
+  $name = mysqli_real_escape_string($db, $_POST['name']);
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
+  $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  $status=mysqli_real_escape_string($db, $_POST['status']);
+  $type=mysqli_real_escape_string($db, $_POST['type']);
+  //new 
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($username)) { array_push($errorsadmin, "Name is required"); }
+  if (empty($email)) { array_push($errorsadmin, "Email is required"); }
+  if(empty($username)){ array_push($errorsadmin, "Username is required");}
+  if (empty($password_1)) { array_push($errorsadmin, "Password is required"); }
+  if ($password_1 != $password_2) {array_push($errorsadmin, "The two passwords do not match");}
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM user WHERE username='$username'   OR email='$email' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    if ($user['username'] === $username) {
+      array_push($errorsadmin, "Username already exists");
+    }
+
+    if ($user['email'] === $email) {
+      array_push($errorsadmin, "email already exists");
+    }
+  }
+
+   if (count($errorsadmin) == 0) {
+    $password = md5($password_1);//encrypt the password before saving in the database
+
+    $query = "INSERT INTO user (name,email,username, password,status,type) 
+          VALUES('$name','$email','$username','$password','$status','$type')";
+    mysqli_query($db, $query);
 
 
 }
-
-
+}
 ?>
+
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

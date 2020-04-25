@@ -12,8 +12,9 @@ $email    = "";
 $regno    ="";
 $username = "";
 //new 
- $status="";
- $token="";
+$status="";
+$token="";
+$type="";
 //new
 $errors = array(); 
 
@@ -123,7 +124,7 @@ if (isset($_POST['reg_user'])) {
 if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
-  $type=mysqli_real_escape_string($db, $_POST['type']);
+  // $type=mysqli_real_escape_string($db, $_POST['type']);
   
 
   if (empty($username)) {
@@ -180,15 +181,18 @@ if(isset($_POST['otp_user'])){
   if(empty($token)){
     array_push($errors, "Enter the otp"); 
   }
-  if(count($errors)==0){
+  if(count($errors)==0)
+  {
     $querys="SELECT * FROM user WHERE token='$token'";
     $result1=mysqli_query($db,$querys);
-    if(mysqli_num_rows($result1)==1){
+    if(mysqli_num_rows($result1)==1)
+    {
      $querys1="UPDATE `user` SET   status=1 WHERE token='$_POST[token]'  ";
      $result2=mysqli_query($db,$querys1);
      if($result2){
 
       array_push($errors,"OTP Verified Successfully!!! You can login now ");
+      header('Location:login.php');
     }
 
      
