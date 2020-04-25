@@ -1,0 +1,33 @@
+.logo {
+  width: 40px;
+  height: 40px;
+}
+#header {
+  margin-top: 90px;
+  background-color: whitesmoke;
+}
+.header {
+  width: 700px;
+  background-color: purple;
+  margin-left: -20px;
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.noticearea {
+  width: 700px;
+  height: 700px;
+  margin-left: -20px;
+  background-color: whitesmoke;
+}
+#noticejaga {
+  margin-left: -600px;
+  display: inline-block;
+}
+#showupdatearea {
+  margin-top: 40px;
+}
+.formmargin {
+  margin-top: 30px;
+}
