@@ -17,6 +17,17 @@
     td{
         text-align: center;
     }
+     .error {
+  width: 92%; 
+  margin: 0px auto; 
+  padding: 10px; 
+  border: 1px solid #a94442; 
+  color: #a94442; 
+  background: #f2dede; 
+  border-radius: 5px; 
+  text-align: left;
+}
+	
 
     .logo{
             width: 40px;
@@ -63,6 +74,7 @@
              </div>
              </nav>
 </div>
+<!-- header section -->
     <div class="container" id="header" style="background-color: whitesmoke;">
         <div class="container" id="heading" style="padding: 10px;">
             <div class="row">
@@ -80,7 +92,7 @@
             </div>
         </div>
     </div>    
-
+<!-- message -->
     <div class="modal fade" id="messagearea" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
@@ -114,7 +126,7 @@
     </div>
 
 
-
+<!-- notice -->
 
     <div class="modal fade" id="noticearea" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
@@ -143,7 +155,7 @@
     </div>
 
 
-
+<!-- Add admin -->
      <div class="modal fade" id="AddAdmin" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
@@ -153,7 +165,6 @@
                 </div>
                 <div class="modal-body">
                     <form action="admin.php" method="POST">
-                            <?php include('errors.php'); ?>
                         <div class="container">
                         <div class="form-group row">
                      <label for="name" class="col-md-2 col-form-label offset-md-2" style="color:black;">Name</label>
@@ -188,9 +199,10 @@
             </div>
         </div>
     </div>
-
+<!-- Data table -->
 	<div id="datatable">
         <div class="container">
+        <!-- Search box -->
     <form action="admin.php" method="POST">
         <?php 
 
@@ -208,7 +220,7 @@
         }
 
 
-
+    // the filter function
         function filtertable($query){
             $connect=mysqli_connect('localhost','root','','reg');
             $filter_result=mysqli_query($connect,$query);
@@ -269,10 +281,8 @@
 
 </body>
 </html>
-
+<!-- backend for sending message -->
 <?php 
-
-//$textarea="";
 $connect=mysqli_connect('localhost','root','','reg');
 if(isset($_POST['message_button'])){
     $registrationnumber=$_POST['registrationnumber'];
@@ -292,6 +302,7 @@ if(isset($_POST['message_button'])){
 
 
 ?>
+<!-- backend for posting notice -->
 <?php
 $noticearea="";
 $connect=mysqli_connect('localhost','root','','reg');
@@ -327,7 +338,7 @@ if(isset($_POST['delete'])){
 ?>
 
 
-<!-- add admin -->
+<!-- backend for adding admin -->
 
 <?php
 $name="";
@@ -335,7 +346,7 @@ $email="";
 $username="";
 $status="";
 $type="";
-$errorsadmin = array(); 
+$errors = array(); 
 
 $db=mysqli_connect('localhost','root','','reg');
 if(isset($_POST['add_button'])){
@@ -351,11 +362,11 @@ if(isset($_POST['add_button'])){
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($username)) { array_push($errorsadmin, "Name is required"); }
-  if (empty($email)) { array_push($errorsadmin, "Email is required"); }
-  if(empty($username)){ array_push($errorsadmin, "Username is required");}
-  if (empty($password_1)) { array_push($errorsadmin, "Password is required"); }
-  if ($password_1 != $password_2) {array_push($errorsadmin, "The two passwords do not match");}
+  if (empty($name)) { array_push($errors, "Name is required"); }
+  if (empty($email)) { array_push($errors, "Email is required"); }
+  if(empty($username)){ array_push($errors, "Username is required");}
+  if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if ($password_1 != $password_2) {array_push($errors, "The two passwords do not match");}
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -365,15 +376,15 @@ if(isset($_POST['add_button'])){
   
   if ($user) { // if user exists
     if ($user['username'] === $username) {
-      array_push($errorsadmin, "Username already exists");
+      array_push($errors, "Username already exists");
     }
 
     if ($user['email'] === $email) {
-      array_push($errorsadmin, "email already exists");
+      array_push($errors, "email already exists");
     }
   }
 
-   if (count($errorsadmin) == 0) {
+   if (count($errors) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
     $query = "INSERT INTO user (name,email,username, password,status,type) 
