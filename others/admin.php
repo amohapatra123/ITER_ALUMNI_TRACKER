@@ -37,6 +37,7 @@
              </div>
              </nav>
 </div>
+<!-- navbar ends -->
 <!-- header section -->
     <div class="container" id="header" style="background-color: whitesmoke;">
         <div class="container" id="heading" style="padding: 10px;">
@@ -54,7 +55,8 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>   
+ <!--header ends  -->
 <!-- message -->
     <div class="modal fade" id="messagearea" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
@@ -87,12 +89,12 @@
             </div>
         </div>
     </div>
-
+<!-- message ends -->
 
 <!-- notice -->
 
     <div class="modal fade" id="noticearea" role="dialog">
-        <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-dialog  modal-lg" role="content">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Notice</h4>
@@ -116,11 +118,11 @@
             </div>
         </div>
     </div>
-
+<!-- notice ends -->
 
 <!-- Add admin -->
      <div class="modal fade" id="AddAdmin" role="dialog">
-        <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="content">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Add Admin</h4>
@@ -162,9 +164,11 @@
             </div>
         </div>
     </div>
+<!-- add admin ends -->
+
 <!-- Data table -->
-	<div id="datatable">
-        <div class="container">
+	<div id="datatable" class="container">
+    <div class="container">
         <!-- Search box -->
     <form action="admin.php" method="POST">
         <?php 
@@ -172,7 +176,8 @@
         if(isset($_POST['search'])){
 
             $valuetosearch1=$_POST['valuetosearch1'];
-            $query="SELECT * FROM user WHERE CONCAT(name,regno,contact,email,gender,branch,year,orgname,designation) LIKE '%".$valuetosearch1."%'  ";
+            $query="SELECT * FROM user WHERE CONCAT(name,regno,contact,email,dob,gender,state,district,
+            locality,pincode,course,branch,year,orgname,designation,cstate,cdistrict,clocality,cpincode) LIKE '%".$valuetosearch1."%'  ";
             $search_result=filtertable($query);
         }
         else{
@@ -201,15 +206,12 @@
 	<table class="table table-striped " >
     <thead>
       <tr>
-        <th style="padding: 15px;">NAME</th>
+        <th>NAME</th>
         <th>REGISTRATION NUMBER</th>
-        <th style="padding: 15px;">CONTACT</th>
-        <th style="padding: 15px;">EMAIL</th>
-        <th style="padding: 15PX;">GENDER</th>
-        <th style="padding: 15px;">BRANCH</th>
+        <th>GENDER</th>
+        <th>COURSE</th>
         <th>PASSING YEAR</th>
-        <th style="padding:15px;">ORGANISATION</th>
-        <th style="padding:15px;">DESIGNATION</th>
+        <th>ORGANISATION</th>
         <th></th>
         <th></th>
         <th></th>
@@ -217,31 +219,100 @@
       </tr>
     </thead>
     <tbody>
-        <?php while($row=mysqli_fetch_array($search_result)):?>
+        <?php while($row=mysqli_fetch_array($search_result)) { ?>
         <tr>
             <td><?php echo $row["name"];?></td>
             <td><?php echo $row["regno"];?></td>
-            <td><?php echo $row["contact"];?></td>
-            <td><?php echo $row["email"];?></td>
             <td><?php echo $row["gender"];?></td>
-            <td><?php echo $row["branch"];?></td>
+            <td><?php echo $row["course"];?></td>
             <td><?php echo $row["year"];?></td>
             <td><?php echo $row["orgname"];?></td>
-            <td><?php echo $row["designation"];?></td>
             <td></td>
-            <td><input type="submit" name="detail"  class="btn btn-success" value="Detail" ></td>
+            <td><button type="button" name="detail"  class="btn btn-success" data-toggle="modal" data-target="#<?php echo $row['username'];?>">Details</button></td>
             <td><input type="hidden" name="delete_username" value="<?php echo $row['username']?>"></td>
             <td><input type="submit" name="delete"  class="btn btn-danger" value="Delete"></td>
         </tr>
-    <?php endwhile;?>
+
+<!--Details Modal-->
+<div class="modal fade" id="<?php echo $row['username'];?>" role="dialog">
+        <div class="modal-dialog modal-dialog-centered  modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Details</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                <div class="row">
+                <label class="col-md-2 form-label">Name:</label>
+                <h5 class="col-md-4"><?php echo $row["name"];?></h5>
+                 <label class="col-md-2 form-label">Date of Birth:</label>
+                <h5 class="col-md-4"><?php echo $row["dob"];?></h5>
+                </div>
+                <div class="row">
+                 <label class="col-md-2 form-label">Email:</label>
+                <h5 class="col-md-2"><?php echo $row["email"];?></h5>
+                </div>
+                 <div class="row">
+                 <label class="col-md-2 form-label">Contact:</label>
+                <h5 class="col-md-2"><?php echo $row["contact"];?></h5>
+                </div>
+                 <div class="row">
+                <label class="col-md-2 form-label">State:</label>
+                <h5 class="col-md-4"><?php echo $row["state"];?></h5>
+                </div>
+                <div class="row">
+                 <label class="col-md-2 form-label">District:</label>
+                <h5 class="col-md-4"><?php echo $row["district"];?></h5>
+                </div>
+                <div class="row">
+                 <label class="col-md-2 form-label">Locality:</label>
+                <h5 class="col-md-10"><?php echo $row["locality"];?></h5>
+                </div>
+                <div class="row"> 
+                <label class="col-md-2 form-label">Pincode:</label>
+                <h5 class="col-md-4"><?php echo $row["pincode"];?></h5>
+                </div>
+                <div class="row">
+                <label class="col-md-2 form-label">Branch:</label>
+                 <h5 class="col-md-2"><?php echo $row["branch"];?></h5>
+                </div>
+                <div class="row">
+                <label class="col-md-2">Organisation:</label>
+                <h5 class="col-md-4"><?php echo $row["orgname"];?></h5>
+                </div>
+                <div class="row"> 
+                 <label class="col-md-2">Designation:</label>
+                <h5 class="col-md-4"><?php echo $row["designation"];?></h5>
+                </div>
+                <div class="row">
+                 <label class="col-md-2">Current State:</label>
+                <h5 class="col-md-4"><?php echo $row["cstate"];?></h5>
+                </div>
+                <div class="row"> 
+                <label class="col-md-2">Current District:</label>
+                <h5 class="col-md-10"><?php echo $row["cdistrict"];?></h5>
+                </div>
+                 <div class="row">
+                 <label class="col-md-2">Current Locality:</label>
+                <h5 class="col-md-10"><?php echo $row["clocality"];?></h5>
+                </div>
+                <div class="row"> 
+                <label class="col-md-2">Current Pincode:</label>
+                <h5 class="col-md-10"><?php echo $row["cpincode"];?></h5>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Details modal ends -->
+        <?php }?>
     </tbody>
+    </table>
+    </div>
+ 
+
     </form>
     </div>
-	</div>
-    
-	
-</div>
-
 </body>
 </html>
 <!-- backend for sending message -->
@@ -283,6 +354,7 @@ if(isset($_POST['notice_button'])){
 
 
 ?>
+<!-- backend for deleting user -->
 <?php
 $connect=mysqli_connect('localhost','root','','reg');
 if(isset($_POST['delete'])){
@@ -295,6 +367,9 @@ if(isset($_POST['delete'])){
     else{
         echo '<script type = "text/javascript"> alert("Error While Deleting User")</script>';
     }
+
+
+    
 }
 
 
