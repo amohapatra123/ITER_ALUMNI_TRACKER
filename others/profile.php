@@ -57,11 +57,10 @@
     <!-- update options -->
     <div class="container" id="showupdatearea" >
       <div class="row">
-        <div class="col-md-3 offset-md-2"><button class="btn btn-dark" id="updatepersonal">Personal Info</button></div>
-        <div class="col-md-3"><button class="btn btn-dark" id="updateeducational">Educational Info</button></div>
-        <div class="col-md-3"><button class="btn btn-dark" id="updateprofessional">Professional Info</button></div>
+        <div class="col-md-3 offset-md-1"><button class="btn btn-dark btn-block" id="updatepersonal">Personal Info</button></div>
+        <div class="col-md-3"><button class="btn btn-dark btn-block" id="updateeducational">Educational Info</button></div>
+        <div class="col-md-3"><button class="btn btn-dark btn-block" id="updateprofessional">Professional Info</button></div>
       </div>
-
     </div>
      <!-- update personal -->
      <div class="container formmargin" id="personal">
@@ -224,7 +223,8 @@
     $("#showupdatearea").hide();
     $("#personal").show(function(){
       $("#updatebutton").click(function(){
-         $("#showupdatearea").hide();
+         $("#showupdatearea").show();
+         $("#personal").hide();
     });
     });
   });
@@ -232,7 +232,8 @@
     $("#showupdatearea").hide();
     $("#updateedu").show(function(){
       $("#updatebutton").click(function(){
-         $("#showupdatearea").hide();
+         $("#showupdatearea").show();
+         $("#updateedu").hide();
     });
     });
   });
@@ -240,11 +241,14 @@
     $("#showupdatearea").hide();
     $("#updatepro").show(function(){
       $("#updatebutton").click(function(){
-         $("#showupdatearea").hide();
+         $("#showupdatearea").show();
+         $("#updatepro").hide();
     });
     });
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <!-- update personal -->
 <?php

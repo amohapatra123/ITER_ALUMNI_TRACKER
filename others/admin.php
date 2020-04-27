@@ -155,7 +155,7 @@
                 <input type="hidden" name="status" value="1">
                         <div class="form-row">
                            <div class="col-md-4 offset-md-2">
-                               <input type="submit" class="btn btn-primary" name="add_button" value="SEND">
+                               <input type="submit" class="btn btn-primary" name="add_button" value="ADD">
                            </div> 
                         </div>
                      </div> 
