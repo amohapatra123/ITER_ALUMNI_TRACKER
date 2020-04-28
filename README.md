@@ -1,2 +1,2 @@
-# ITER_ALUMNI_TRACKER
-This is a website that will  track the alumni of the college.
+# Alumnus Tracking System -
+  A complete info based on the graduates of "Institute of Technical Education and Research".<br /><br />
