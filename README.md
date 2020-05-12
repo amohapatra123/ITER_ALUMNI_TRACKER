@@ -1,5 +1,5 @@
 ![alumnus1](https://user-images.githubusercontent.com/53346605/81475174-1cef1880-9228-11ea-94d2-42abb1cb2697.jpg)
-# Alumnus Tracking System -
+ # ITER ALUMNI TRACKER -
   A complete info based on the graduates of "Institute of Technical Education and Research".<br /><br />
  # Overview -
  An online platform for the alumnus and the universiity to stay in touch. This medium helps the university to track the personal and the professional details of an alumnus.
