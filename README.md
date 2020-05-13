@@ -11,10 +11,17 @@
   # Benefits for Alumnus -
     - Can visit profile of other alumnus.
     - Can be kept updated with various events and programs.
-  # Benefitss for College -
+  # Benefits for College -
     - Can track record of personal and proffesional details of pass outs.
     - Can communicate to the alumnnus incase of need.
   # Security measures -
     - Alumnus can only sign up themselves through the previous registered mail ID and registration number.
-    - Only ater verification of the details provided by the alumnus the OTP wll be generated.
+    - Only after verification of the details provided by the alumnus the OTP wll be generated.
     - Fail in the matching of OTP may lead to unsuccess form submission.
+  # Admin contol
+    - Admin can filter out to see the details of each and every individual registered through the portal.
+    - Admin can contact any alumnus in case of any official or personal need.
+    - Admin can add other incharge for the maintainance of the portal.
+    - Admin himself/herself can post notices related to upcoming events and programs.
+    - Admin has the authorised access to delete an alumnus details if found non authentic.
+    
